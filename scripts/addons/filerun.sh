@@ -110,7 +110,7 @@ echo "Restart Nginx & PHP-FPM ..."
 echo ""
 sleep 1
 systemctl restart nginx
-systemctl restart php7.3-fpm.service
+systemctl restart php7.0-fpm.service
 clear
  
 # Success Prompt
