@@ -17,6 +17,7 @@ Here all the list that the script will install
 - Memcached
 - FASTCGI_CACHE
 - IONCUBE
+- MCRYPT
 - HTOP
 - NETSTAT
 - OPEN SSL
@@ -26,7 +27,7 @@ Here all the list that the script will install
 
 ## Prerequisites
 What things you need to make sure before proceed.
-* **ONLY FOR DEBIAN 10**
+* **ONLY FOR DEBIAN 9**
 * **YOU SHOULD BE LOGIN AS ROOT**
 
 ## How to use
