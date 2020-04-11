@@ -28,7 +28,7 @@ end=$'\e[0m'
     echo ""
     
     sleep 3
-    apt update >/dev/null 2>&1
+    apt update 
     echo ""
     sleep 1
 
@@ -36,7 +36,7 @@ end=$'\e[0m'
     echo "${grn}Installing UFW Firewall ...${end}"
     echo "" 
     sleep 2
-    apt install ufw >/dev/null 2>&1
+    apt install ufw 
     echo ""
     sleep 1
 
@@ -44,7 +44,7 @@ end=$'\e[0m'
     echo "${grn}Allow openSSH UFW ...${end}"
     echo "" 
     sleep 2
-    ufw allow OpenSSH >/dev/null 2>&1
+    ufw allow OpenSSH 
     echo ""
     sleep 1
 
@@ -52,7 +52,7 @@ end=$'\e[0m'
     echo "${grn}Enabling UFW ...${end}"
     echo ""
     sleep 2
-    yes | ufw enable >/dev/null 2>&1
+    yes | ufw enable 
     echo "y"
     echo ""
     sleep 1
@@ -62,17 +62,17 @@ end=$'\e[0m'
     echo "" 
     sleep 2
     MARIADB_VERSION='10.1'
-    debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password password $1" >/dev/null 2>&1
-    debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password $1" >/dev/null 2>&1
-    apt-get install -qq mariadb-server >/dev/null 2>&1
+    debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password password $1" 
+    debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password $1" 
+    apt-get install -qq mariadb-server 
     echo ""
     sleep 1
 
     echo "${grn}Installing PHP 7.0 ...${end}"
     echo ""
     sleep 2
-    apt install php7.0-fpm php-mysql -y >/dev/null 2>&1
-    apt-get install php7.0 php7.0-common php7.0-gd php7.0-mysql php7.0-imap php7.0-cli php7.0-cgi php-pear mcrypt imagemagick libruby php7.0-curl php7.0-intl php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl memcached php-memcache php-imagick php-gettext php7.0-zip php7.0-mbstring memcached php7.0-soap php7.0-fpm php7.0-opcache php-apcu -y >/dev/null 2>&1
+    apt install php7.0-fpm php-mysql -y 
+    apt-get install php7.0 php7.0-common php7.0-gd php7.0-mysql php7.0-imap php7.0-cli php7.0-cgi php-pear mcrypt imagemagick libruby php7.0-curl php7.0-intl php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl memcached php-memcache php-imagick php-gettext php7.0-zip php7.0-mbstring memcached php7.0-soap php7.0-fpm php7.0-opcache php-apcu -y 
     echo ""
     sleep 1
 
@@ -81,9 +81,9 @@ end=$'\e[0m'
     echo ""
  
     sleep 3
-    apt-get install nginx -y >/dev/null 2>&1
-    ufw allow 'Nginx HTTP' >/dev/null 2>&1
-    systemctl start nginx >/dev/null 2>&1
+    apt-get install nginx -y 
+    ufw allow 'Nginx HTTP' 
+    systemctl start nginx 
 
         # Configure PHP FPM
     sed -i "s/max_execution_time = 30/max_execution_time = 360/g" /etc/php/7.0/fpm/php.ini
@@ -99,10 +99,10 @@ end=$'\e[0m'
     echo "${grn}Installing Memcached ...${end}"
     echo ""
     sleep 2
-    apt install memcached -y >/dev/null 2>&1
+    apt install memcached -y 
     echo ""
     sleep 1
-    apt install php-memcached -y >/dev/null 2>&1
+    apt install php-memcached -y 
     sleep 1
 
     # Installing IONCUBE
@@ -116,26 +116,26 @@ end=$'\e[0m'
     PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
  
     # Download ioncube
-    wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz >/dev/null 2>&1
-    tar -xvzf ioncube_loaders_lin_x86-64.tar.gz >/dev/null 2>&1
-    rm -f ioncube_loaders_lin_x86-64.tar.gz >/dev/null 2>&1
+    wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz 
+    tar -xvzf ioncube_loaders_lin_x86-64.tar.gz 
+    rm -f ioncube_loaders_lin_x86-64.tar.gz 
     # Copy files to modules folder
-    sudo cp "ioncube/ioncube_loader_lin_${PHP_VERSION}.so" $MODULES >/dev/null 2>&1
+    sudo cp "ioncube/ioncube_loader_lin_${PHP_VERSION}.so" $MODULES 
     echo "zend_extension=$MODULES/ioncube_loader_lin_${PHP_VERSION}.so" >> /etc/php/7.0/fpm/php.ini
     echo "zend_extension=$MODULES/ioncube_loader_lin_${PHP_VERSION}.so" >> /etc/php/7.0/cli/php.ini
 
     rm -rf ioncube
-    systemctl restart php7.0-fpm.service >/dev/null 2>&1
-    systemctl restart nginx >/dev/null 2>&1
+    systemctl restart php7.0-fpm.service 
+    systemctl restart nginx 
 
     # Mcrypt
-    apt-get install php-dev libmcrypt-dev php-pear -y >/dev/null 2>&1
-    pecl channel-update pecl.php.net >/dev/null 2>&1
-    yes | pecl install channel://pecl.php.net/mcrypt-1.0.2 >/dev/null 2>&1
+    apt-get install php-dev libmcrypt-dev php-pear -y 
+    pecl channel-update pecl.php.net 
+    yes | pecl install channel://pecl.php.net/mcrypt-1.0.2 
     echo "extension=$MODULES/mcrypt.so" >> /etc/php/7.0/fpm/php.ini
     echo "extension=$MODULES/mcrypt.so" >> /etc/php/7.0/cli/php.ini
-    systemctl restart php7.0-fpm.service >/dev/null 2>&1
-    systemctl restart nginx >/dev/null 2>&1
+    systemctl restart php7.0-fpm.service 
+    systemctl restart nginx 
     echo ""
     sleep 1
 
@@ -143,7 +143,7 @@ end=$'\e[0m'
     echo "${grn}Installing HTOP ...${end}"
     echo ""
     sleep 2
-    apt-get install htop >/dev/null 2>&1
+    apt-get install htop 
     echo ""
     sleep 1
 
@@ -151,8 +151,8 @@ end=$'\e[0m'
     echo "${grn}Installing netstat ...${end}"
     echo ""
     sleep 2
-    apt install net-tools -y >/dev/null 2>&1
-    netstat -ptuln >/dev/null 2>&1
+    apt install net-tools -y 
+    netstat -ptuln 
     echo ""
     sleep 1
 
@@ -161,10 +161,10 @@ end=$'\e[0m'
     echo ""
     sleep 2
     cd /etc/ssl/certs/
-    openssl dhparam -dsaparam -out dhparam.pem 4096 >/dev/null 2>&1
+    openssl dhparam -dsaparam -out dhparam.pem 4096 
     cd
-    ufw allow 'Nginx Full' >/dev/null 2>&1
-    ufw delete allow 'Nginx HTTP' >/dev/null 2>&1
+    ufw allow 'Nginx Full' 
+    ufw delete allow 'Nginx HTTP' 
     echo ""
     sleep 1
 
@@ -172,7 +172,7 @@ end=$'\e[0m'
     echo "${grn}Installing AB BENCHMARKING TOOL ...${end}"
     echo ""
     sleep 2
-    apt-get install apache2-utils -y >/dev/null 2>&1
+    apt-get install apache2-utils -y 
     echo ""
     sleep 1
 
@@ -180,8 +180,8 @@ end=$'\e[0m'
     echo "${grn}Installing ZIP AND UNZIP ...${end}"
     echo ""
     sleep 2
-    apt-get install unzip >/dev/null 2>&1
-    apt-get install zip >/dev/null 2>&1
+    apt-get install unzip 
+    apt-get install zip 
     echo ""
     sleep 1
 
@@ -189,8 +189,8 @@ end=$'\e[0m'
     echo "${grn}Installing FFMPEG AND IMAGEMAGICK...${end}"
     echo ""
     sleep 2
-    apt-get install imagemagick -y >/dev/null 2>&1
-    apt-get install ffmpeg -y >/dev/null 2>&1
+    apt-get install imagemagick -y 
+    apt-get install ffmpeg -y 
     echo ""
     sleep 1
 
@@ -198,10 +198,10 @@ end=$'\e[0m'
     echo "${grn}Configuring to make PHP-FPM working with Nginx ...${end}"
     echo ""
     sleep 2
-    rm -rf /etc/nginx/nginx.conf >/dev/null 2>&1
+    rm -rf /etc/nginx/nginx.conf 
     cd /etc/nginx/
-    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/nginx.conf -O nginx.conf >/dev/null 2>&1
-    dos2unix /etc/nginx/nginx.conf >/dev/null 2>&1
+    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/nginx.conf -O nginx.conf 
+    dos2unix /etc/nginx/nginx.conf 
     cd
     echo ""
     sleep 1
@@ -234,23 +234,23 @@ sleep 1
  
     sleep 3
     php7_dotdeb="https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/php7dotdeb"
-    wget -q $php7_dotdeb -O /etc/php/7.0/fpm/pool.d/$domain.conf >/dev/null 2>&1
+    wget -q $php7_dotdeb -O /etc/php/7.0/fpm/pool.d/$domain.conf 
     sed -i "s/domain.com/$domain/g" /etc/php/7.0/fpm/pool.d/$domain.conf
     echo "" >> /etc/php/7.0/fpm/pool.d/$domain.conf
-    dos2unix /etc/php/7.0/fpm/pool.d/$domain.conf >/dev/null 2>&1
-    service php7.0-fpm reload >/dev/null 2>&1
+    dos2unix /etc/php/7.0/fpm/pool.d/$domain.conf 
+    service php7.0-fpm reload 
 
         # Restart nginx and php-fpm
     echo "Restart Nginx & PHP-FPM ..."
     echo ""
     sleep 1
-    systemctl restart nginx >/dev/null 2>&1
-    systemctl restart php7.0-fpm.service >/dev/null 2>&1
+    systemctl restart nginx 
+    systemctl restart php7.0-fpm.service 
 
      # Menu Script
     cd
-    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/menu.sh -O menu.sh >/dev/null 2>&1
-    dos2unix menu.sh >/dev/null 2>&1
+    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/menu.sh -O menu.sh 
+    dos2unix menu.sh 
     chmod +x menu.sh
 
     # Success Prompt
