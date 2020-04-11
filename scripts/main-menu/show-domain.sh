@@ -28,5 +28,5 @@ ls -I default -I phpmyadmin -I filemanager -1 /etc/nginx/sites-enabled/
 echo "${end}_____________"
 echo ""
 
-rm -f /root/showdomain.sh
+rm -f /root/show-domain.sh
 exit
