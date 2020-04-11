@@ -1,1 +1,1 @@
-Add Ons Installation
+Add Ons Installations
