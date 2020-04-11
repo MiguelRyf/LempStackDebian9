@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 # Script author: Miguel
 # Install Rainloop
  
