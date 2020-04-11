@@ -10,9 +10,9 @@ The installation will also optimize the configuration within LEMP.
 
 ## Installation List
 Here all the list that the script will install
-- Nginx: 1.14.2
-- MariaDB: 10.3.22-MariaDB-0+deb10u1
-- PHP 7: 7.3.14-1~deb10u1
+- Nginx: 1.10.3
+- MariaDB: 10.1.44-MariaDB-0+deb9u1
+- PHP 7: 7.0.33-0+deb9u7
 - UFW Firewall
 - Memcached
 - FASTCGI_CACHE
