@@ -97,7 +97,7 @@ rm -fr /var/www/$domain
 unlink /etc/nginx/sites-enabled/$domain
 rm -f /etc/nginx/sites-available/$domain
 rm -f /var/log/nginx/$domain.error.log
-rm -f /etc/php/7.3/fpm/pool.d/$domain.conf
+rm -f /etc/php/7.0/fpm/pool.d/$domain.conf
 
 # Delete ssl.
 rm -rf /etc/letsencrypt/live/$domain /etc/letsencrypt/renewal/$domain.conf /etc/letsencrypt/archive/$domain
