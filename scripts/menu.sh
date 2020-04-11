@@ -72,33 +72,33 @@ read -p "Choose your option [1-11]: " choice
       sub_menu2;
       ;;
   
-      3) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/main-menu/showdomain.sh -O ~/showdomain.sh && dos2unix ~/showdomain.sh && bash ~/showdomain.sh;
+      3) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/main-menu/showdomain.sh -O ~/showdomain.sh && dos2unix ~/showdomain.sh && bash ~/showdomain.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
 
-      4) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/database-menu/show-databases.sh -O ~/show-databases.sh && dos2unix ~/show-databases.sh && bash ~/show-databases.sh;
+      4) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/database-menu/show-databases.sh -O ~/show-databases.sh && dos2unix ~/show-databases.sh && bash ~/show-databases.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
 
-      5) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/addons/rainloop.sh -O ~/rainloop.sh && dos2unix ~/rainloop.sh && bash ~/rainloop.sh;
+      5) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/addons/rainloop.sh -O ~/rainloop.sh && dos2unix ~/rainloop.sh && bash ~/rainloop.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
 
-      6) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/addons/filerun.sh -O ~/filerun.sh && dos2unix ~/filerun.sh && bash ~/filerun.sh;
+      6) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/addons/filerun.sh -O ~/filerun.sh && dos2unix ~/filerun.sh && bash ~/filerun.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
 
-   7) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/main-menu/changeportsshd.sh -O ~/changeportssh.sh && dos2unix ~/changeportssh.sh && bash ~/changeportssh.sh;
+   7) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/main-menu/changeportsshd.sh -O ~/changeportssh.sh && dos2unix ~/changeportssh.sh && bash ~/changeportssh.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
 
    8)     clear;
-            systemctl restart php7.3-fpm.service;
+            systemctl restart php7.0-fpm.service;
             systemctl restart nginx;
             echo "${cyn}Server Refreshed!${end}";
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
@@ -112,7 +112,7 @@ read -p "Choose your option [1-11]: " choice
           main_menu;
           ;;
 
-   10) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/main-menu/restartserver.sh -O ~/restartserver.sh && dos2unix ~/restartserver.sh && bash ~/restartserver.sh;
+   10) wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/main-menu/restartserver.sh -O ~/restartserver.sh && dos2unix ~/restartserver.sh && bash ~/restartserver.sh;
             read -p "${grn}Press [Enter] key to continue...${end}" readEnterKey;
           main_menu;
           ;;
