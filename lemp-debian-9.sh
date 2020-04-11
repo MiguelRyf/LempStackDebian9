@@ -131,9 +131,7 @@ end=$'\e[0m'
     # Mcrypt
     apt-get install php-dev libmcrypt-dev php-pear -y 
     pecl channel-update pecl.php.net 
-    yes | pecl install channel://pecl.php.net/mcrypt-1.0.2 
-    echo "extension=$MODULES/mcrypt.so" >> /etc/php/7.0/fpm/php.ini
-    echo "extension=$MODULES/mcrypt.so" >> /etc/php/7.0/cli/php.ini
+    apt-get install mcrypt php7.0-mcrypt
     systemctl restart php7.0-fpm.service 
     systemctl restart nginx 
     echo ""
