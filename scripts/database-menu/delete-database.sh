@@ -52,8 +52,8 @@ SHOW DATABASES;
 MYSQL_SCRIPT
 echo "${end}___________"
 echo ""
-read -p ${grn}"Type your database name you want to delete${end}: " userdb1
-read -p ${grn}"Type your database name one more time${end}: " userdb2
+read -p "Type your database name you want to delete: " userdb1
+read -p "Type your database name one more time: " userdb2
 echo
 [ "$userdb1" = "$userdb2" ] && break
 echo "Database name you provide does not match, please try again!"
