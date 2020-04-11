@@ -198,7 +198,7 @@ end=$'\e[0m'
     sleep 2
     rm -rf /etc/nginx/nginx.conf >/dev/null 2>&1
     cd /etc/nginx/
-    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/nginx.conf -O nginx.conf >/dev/null 2>&1
+    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/nginx.conf -O nginx.conf >/dev/null 2>&1
     dos2unix /etc/nginx/nginx.conf >/dev/null 2>&1
     cd
     echo ""
@@ -231,7 +231,7 @@ sleep 1
     echo ""
  
     sleep 3
-    php7_dotdeb="https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/php7dotdeb"
+    php7_dotdeb="https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/php7dotdeb"
     wget -q $php7_dotdeb -O /etc/php/7.0/fpm/pool.d/$domain.conf >/dev/null 2>&1
     sed -i "s/domain.com/$domain/g" /etc/php/7.0/fpm/pool.d/$domain.conf
     echo "" >> /etc/php/7.0/fpm/pool.d/$domain.conf
@@ -247,7 +247,7 @@ sleep 1
 
      # Menu Script
     cd
-    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian10/master/scripts/menu.sh -O menu.sh >/dev/null 2>&1
+    wget https://raw.githubusercontent.com/MiguelRyf/LempStackDebian9/master/scripts/menu.sh -O menu.sh >/dev/null 2>&1
     dos2unix menu.sh >/dev/null 2>&1
     chmod +x menu.sh
 
